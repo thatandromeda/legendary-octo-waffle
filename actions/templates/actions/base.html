@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <section class="hero is-dark is-bold is-fullheight">
+      <div class="hero-head">
+        <div class="container">
+          <h1 class="title">do one thing now:</h1>
+        </div>
+      </div>
+
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <nav class="tabs is-boxed">
+          <div class="container">
+            <div class="navbar-menu">
+              <div class="navbar-end">
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="https://github.com/thatandromeda/legendary-octo-waffle">GitHub</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+  </body>
+</html>
