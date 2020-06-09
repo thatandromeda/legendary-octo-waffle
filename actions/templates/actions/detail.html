@@ -5,13 +5,22 @@
 {% block content %}
 <section>
   <a href="{{ object.link }}" class="button is-warning is-large is-fullwidth">{{ object.call_to_action }}</a>
-  {% if object.description %}
+  {% if object.description or object.citation %}
     <div class="card has-background-white-ter mt-5">
-      <div class="card-content">
-        <p class="has-text-justified">
-          {{ object.description }}
-        </p>
-      </div>
+      {% if object.description %}
+        <div class="card-content">
+          <div class="content has-text-justified">
+            {{ object.description }}
+          </div>
+        </div>
+      {% endif %}
+      {% if object.citation %}
+        <footer class="card-footer">
+          <div class="container">
+            From: {{ object.citation }}
+          </div>
+        </footer>
+      {% endif %}
     </div>
   {% endif %}
 {% endblock %}
