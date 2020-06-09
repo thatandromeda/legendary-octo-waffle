@@ -8,8 +8,7 @@ from .base import *  # noqa
 # DATABASE CONFIGURATION
 # -----------------------------------------------------------------------------
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)  # noqa
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # SECURITY CONFIGURATION
@@ -27,7 +26,7 @@ CSRF_COOKIE_SECURE=True
 # ALLOWED_HOSTS CONFIGURATION
 # -----------------------------------------------------------------------------
 
-ALLOWED_HOSTS = ['antiracism-club-staging.herokuapp.com/',
+ALLOWED_HOSTS = ['antiracism-club-staging.herokuapp.com',
                  'antiracism-club.herokuapp.com']
 
 # This allows us to include review apps in ALLOWED_HOSTS even though we don't
@@ -40,11 +39,11 @@ if APP_NAME:
 
 # STATIC FILE CONFIGURATION
 # -----------------------------------------------------------------------------
+# probably not relevant since all styles come from bulma CDN
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# whitenoise needs to be first
-MIDDLEWARE = ('whitenoise.middleware.WhiteNoiseMiddleware',) + MIDDLEWARE
+MIDDLEWARE += ('whitenoise.middleware.WhiteNoiseMiddleware',)
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
