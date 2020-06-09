@@ -1,4 +1,6 @@
 notes.md
+staticfiles/*
+!staticfiles/.keep
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,python,osx,sublimetext
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,python,osx,sublimetext
